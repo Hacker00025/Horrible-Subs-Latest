@@ -26,7 +26,6 @@ def hs_latest():
             anime.add(z)
         if nt:
             print(datetime.now())
-            nt = False
         time.sleep(120)
 
 hs_latest()
