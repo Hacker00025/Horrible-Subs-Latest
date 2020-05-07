@@ -6,8 +6,9 @@ from datetime import datetime
 def hs_latest():
     anime = set() #Created new blank set
     while True: #Infinite Loop
+        s = requests.session() #Creating a new session
         url = 'https://horriblesubs.info/api.php?method=getlatest' #This is the Horrible subs URL added to a varriable
-        source_code = requests.get(url) #Setting the URL's source code to a new varriable
+        source_code = s.get(url) #Setting the URL's source code to a new varriable
         plain_text = source_code.text #Converting all the source code to plain text and assiging it to a variable
         soup = BeautifulSoup(plain_text, features='html.parser') #Creating a BS4 Object using the html parser
         all_li_elements = soup.find_all('li') #Searching the plain text to find all the list elements of the webpage and assigning it to a variable
@@ -28,4 +29,5 @@ def hs_latest():
             print(datetime.now()) #Check for var True or False and prints date and time new ep is added
         time.sleep(120) #Waits 2 min before checking again
 
-hs_latest() #Calls the function
+
+hs_latest()  #Calls the function
